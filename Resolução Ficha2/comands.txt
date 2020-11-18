@@ -1,0 +1,2 @@
+notepad
+C:\Program Files\Mozilla Firefox\firefox.exe" "www.google.pt
