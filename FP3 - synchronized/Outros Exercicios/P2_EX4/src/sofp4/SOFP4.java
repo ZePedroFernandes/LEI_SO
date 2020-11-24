@@ -13,9 +13,10 @@ public class SOFP4 {
      */
     public static void main(String[] args) {
         int number = 999;
-        while (number == 999) {
-            int[] array = arrayOneTo1000();
+        int[] array = arrayOneTo1000();
 
+        while (number == 999) {
+            
             SharedNumber sharedNumber = new SharedNumber();
             searchArrayHigher[] threads = createThreads(5, sharedNumber, array);
 
@@ -118,12 +119,12 @@ class searchArrayHigher extends Thread {
     public void run() {
         int result = 0;
         for (int i = initialPosition; i < finalPosition; i++) {
-            if (numbers[i] > sharedHigherNumber.getNumber()) {
-                result = numbers[i]; /*Se remover esta linha e a linha 129, 
-                e descomentar a linha abaixo o programa funiona corretamente e eu não percebo porquê*/
+            //if (numbers[i] > sharedHigherNumber.getNumber()) {
+               // result = numbers[i]; /*Se remover esta linha e a linha 129, 
+               // e descomentar a linha abaixo o programa funciona corretamente e eu não percebo porquê*/
                 
-                sharedHigherNumber.setHigher(result);
-            }
+                sharedHigherNumber.setHigher(numbers[i]);
+            //}
         }
         //sharedHigherNumber.setHigher(result);
     }
