@@ -56,7 +56,6 @@ class Current implements Runnable {
 
     @Override
     public void run() {
-        boolean flag = false;
         while (true) {
             try {
                 sem1.acquire();
@@ -66,7 +65,7 @@ class Current implements Runnable {
 
                 } else {
                     sem1.release();
-                    break;
+                    return;
                 }
                 sem1.release();
                 Thread.currentThread().sleep(1000);
