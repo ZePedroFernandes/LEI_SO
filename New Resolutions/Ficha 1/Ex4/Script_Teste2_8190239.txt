@@ -1,0 +1,85 @@
+#########################################################################
+#   Teste 2
+#   
+#   NOME ESTUDANTE: José Pedro Fernandes
+#   NÚMERO: 8190239
+
+#  Script da base de dados:  Marketing_RedesSociais.txt
+#
+#
+#########################################################################
+# 
+# Leitura do ficheiro de dados (dataframe)
+#
+#########################################################################
+
+
+dados<-read.table("Marketing_RedesSociais.txt",header=T,dec=",")
+
+# Visualização dos dados e 
+# visualização das variáveis e número das observações
+
+head(dados)
+str(dados)
+
+
+# Para aceder diretamente às colunas do dataframe, 
+# ou seja, chamar as variáveis pelos respetivos nomes, usar a seguinte função:
+attach(dados)
+
+
+###########################################
+# Questões Estatística Descritiva
+# Escrever só as funções a utilizar para depois
+# escrever as respostas no Teste 2 no Moodle
+# Identificar as alíneas
+###########################################
+# Pergunta 1
+# a)
+femnc <- with(dados,ID[Sexo =="Female" & Adquiriu == 0])
+length(femnc)
+
+# b)
+fem <- with(dados,Rend[Sexo == "Female"])
+mas <- with(dados,Rend[Sexo == "Male"])
+mean(fem)
+mean(mas)
+summary(fem)
+summary(mas)
+boxplot(fem)
+boxplot(mas)
+sd(fem)
+sd(mas)
+
+# c)
+summary(Rend)
+
+
+# Pergunta 2
+# a)
+pnorm(40,38,10.5)-pnorm(35,38,10.5)
+
+# b)
+quantile(Idade,0.45)
+
+# Pergunta3
+adq <- with(dados,ID[Adquiriu == 1])
+length(adq)
+143*100/400
+
+pbinom(135,400,0.3575,F) + dbinom(135,400,0.3575)
+
+
+# Pergunta 4
+# a) 
+skewness(Rend)
+wilcox.test(Rend,alternative = "less",conf.level = 0.975,mu = 75000)
+
+# b)
+masculino <- with(dados,Rend[Sexo == "Male"])
+feminino <- with(dados,Rend[Sexo == "Female"])
+
+skewness(masculino)
+skewness(feminino)
+
+wilcox.test(masculino,feminino)
