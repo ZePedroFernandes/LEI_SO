@@ -38,10 +38,10 @@ public class ExercFinal {
         @Override
         public void run() {
             bankAccount.putMoney(monthlySalary);
-            synchronized (this.bankAccount) {
-                for (int i = 0; i < 10; i++) {
-                    int amount = new Random().nextInt(150) + 150;
+            for (int i = 0; i < 10; i++) {
+                int amount = new Random().nextInt(150) + 150;
 
+                synchronized (this.bankAccount) {
                     if (bankAccount.money >= amount) {
                         bankAccount.getMoney(amount);
                     }
